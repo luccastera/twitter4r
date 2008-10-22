@@ -2,6 +2,7 @@ class Twitter::Client
   @@FRIENDSHIP_URIS = {
     :add => '/friendships/create',
     :remove => '/friendships/destroy',
+    :exists => '/friendships/exists'    
   }
 	
   # Provides access to the Twitter Friendship API.
@@ -32,4 +33,15 @@ class Twitter::Client
     response = http_connect {|conn| create_http_post_request(uri) }
     bless_model(Twitter::User.unmarshal(response.body))
   end
+  
+  # Tests if a friendship exists between two users.
+  # 
+  # Examples:
+  #   client.are_friends?(user1,user2)
+  def are_friends?(user1,user2)
+    uri = "#{@@FRIENDSHIP_URIS[:exists]}.json?user_a=#{user1}&user_b=#{user2}"
+    response = http_connect {|conn| create_http_post_request(uri) }
+    are_they_friends = response.body.gsub!('"','')
+    are_they_friends == "true" ? true : false
+  end  
 end
