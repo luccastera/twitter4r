@@ -62,4 +62,26 @@ class Twitter::Client
     users = Twitter::User.unmarshal(response.body)
     bless_models(users)
   end
+  
+  # Returns all followers for an authenticated user.
+  #
+  # This method makes multiple call to the Twitter API to get all users.
+  # By default, the Twitter API only returns 100 followers at a time.
+  # This method was written for the case where you need all followers,no matter how many there are.
+  #
+  def all_followers
+    has_followers_remaining = true
+    followers_array = []
+    page = 1
+    while has_followers_remaining
+      tmp_followers = self.my(:followers, :page => page)
+      followers_array << tmp_followers
+      #puts "Page: #{page} , followers: #{tmp_followers.size}"
+      page += page
+      has_followers_remaining = false unless tmp_followers.size > 98
+      sleep 1
+    end
+    followers_array.flatten! 
+  end
+  
 end
