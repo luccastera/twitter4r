@@ -42,7 +42,6 @@ class Twitter::Client
   def are_friends?(user1,user2)
     uri = "#{@@FRIENDSHIP_URIS[:exists]}.json?user_a=#{user1}&user_b=#{user2}"
     response = http_connect {|conn| create_http_post_request(uri) }
-    are_they_friends = response.body.gsub!('"','')
-    are_they_friends == "true" ? true : false
+    response.body.rindex('true') ? true : false
   end  
 end
