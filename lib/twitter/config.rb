@@ -55,7 +55,7 @@ module Twitter
                    :application_name => 'Twitter4R',
                    :application_version => Twitter::Version.to_version,
                    :application_url => 'http://twitter4r.rubyforge.org',
-                   :source => 'twitter4r',
+                   :source => 'sharememe',
     }
     @@config = Twitter::Config.new(@@defaults)
 
