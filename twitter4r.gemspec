@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.platform = Gem::Platform::RUBY
   s.has_rdoc = true
   s.extra_rdoc_files = ["README","CHANGES","TODO","MIT-LICENSE",]
-  s.summary = "A clean Twitter client API in pure Ruby. Will include Twitter add-ons also in Ruby."
+  s.summary = "A clean Twitter client API in pure Ruby. Will include Twitter add-ons also in Ruby. (This version has changes made by Luc Castera)"
   s.author = "Susan Potter"
   s.email = "twitter4r-users@googlegroups.com"
   s.homepage = "http://twitter4r.rubyforge.org"
