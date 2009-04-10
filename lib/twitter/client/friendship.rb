@@ -40,8 +40,8 @@ class Twitter::Client
   #   client.are_friends?(user1,user2)  #=> returns true if user1 follows user2
   #                                     #=> returns false if user1 does not follower user2   
   def are_friends?(user1,user2)
-    uri = "#{@@FRIENDSHIP_URIS[:exists]}.json?user_a=#{user1}&user_b=#{user2}"
-    response = http_connect {|conn| create_http_post_request(uri) }
+    uri = "#{@@FRIENDSHIP_URIS[:exists]}.json"
+    response = http_connect {|conn| create_http_get_request(uri, {:user_a => "#{user1}", :user_b => "#{user2}" })}
     response.body.rindex('true') ? true : false
   end  
 end
