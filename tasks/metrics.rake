@@ -1,3 +1,4 @@
+gem('jscruggs-metric_fu')
 require('metric_fu')
 
 MetricFu::Configuration.run do |config|
