@@ -1,5 +1,7 @@
 # Contains hooks for the twitter console
 
+require('optparse')
+
 module Twitter
   class Client
     class << self
@@ -26,3 +28,4 @@ module Twitter
     end # class << self
   end
 end
+
